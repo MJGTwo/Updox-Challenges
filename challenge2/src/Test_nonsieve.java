@@ -4,18 +4,21 @@
 //	exist between the given two integers.
 //File: This is the j-unit test file to verify prime generation.
 
-package challenge2;
+
 
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
 import java.io.IOException;
 import org.junit.Test;
+
+import challenge2.Primes;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Tests {
+public class Test_nonsieve {
 
 	@Test
 	public void isPrime1() {
@@ -69,7 +72,7 @@ public class Tests {
 	}
 	
 	@Test
-	public void generatePrimes1() {
+	public void generatePrimes_1() {
 		try {
 			Primes x = new Primes();
 			List<Integer> results = x.generate(-9,3);
@@ -84,7 +87,7 @@ public class Tests {
 	}
 	
 	@Test
-	public void generatePrimes2() {
+	public void generatePrimes_2() {
 		try {
 			Primes x = new Primes();
 			List<Integer> results = x.generate(2,3);
@@ -98,7 +101,7 @@ public class Tests {
 	}
 	
 	@Test
-	public void generatePrimes3() {
+	public void generatePrimes_3() {
 		try {
 			Primes x = new Primes();
 			List<Integer> results = x.generate(-100,-1);
@@ -112,7 +115,7 @@ public class Tests {
 	}
 	
 	@Test
-	public void generatePrimes4() {
+	public void generatePrimes_4() {
 		try {
 			Primes x = new Primes();
 			List<Integer> results = x.generate(1,10);
@@ -126,7 +129,7 @@ public class Tests {
 	}
 	
 	@Test
-	public void generatePrimes5() {
+	public void generatePrimes_5() {
 		try {
 			Primes x = new Primes();
 			List<Integer> results = x.generate(0,100);
@@ -142,7 +145,7 @@ public class Tests {
 	}
 	
 	@Test
-	public void generatePrimes6() {
+	public void generatePrimes_6() {
 		try {
 			Primes x = new Primes();
 			List<Integer> results = x.generate(50,100);
@@ -158,7 +161,7 @@ public class Tests {
 	}
 	
 	@Test
-	public void generatePrimes7() {
+	public void generatePrimes_7() {
 		try {
 			Primes x = new Primes();
 			List<Integer> results = x.generate(100,-100);
@@ -174,7 +177,7 @@ public class Tests {
 	}
 	
 	@Test
-	public void generatePrimes8() {
+	public void generatePrimes_8() {
 		try {
 			Primes x = new Primes();
 			List<Integer> results = x.generate(1000,0);
@@ -190,7 +193,7 @@ public class Tests {
 	}
 	
 	@Test
-	public void generatePrimes9() {
+	public void generatePrimes_9() {
 		try {
 			Primes x = new Primes();
 			List<Integer> results = x.generate(1000,0);
@@ -206,11 +209,26 @@ public class Tests {
 	}
 	
 	@Test
-	public void generatePrimes10() {
+	public void generatePrimes_10() {
 		try {
 			Primes x = new Primes();
 			List<Integer> results = x.generate(104730,0);
 			List<Integer> expected = new ArrayList<>(x.refNumberList);
+			assertThat(results, equalTo(expected));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	@Test
+	public void generatePrimes_11() {
+		try {
+			Primes x = new Primes();
+			List<Integer> results = x.generate(104730,104728);
+			List<Integer> expected = new ArrayList<>();
+			expected.add(104729);
 			assertThat(results, equalTo(expected));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
