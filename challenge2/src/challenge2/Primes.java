@@ -183,7 +183,17 @@ public class Primes implements PrimeNumberGenerator {
 		test.add(value);
 		
 		//System.out.println(refNumbers);
-		return refNumberSet.containsAll(test);
+		if (value > 104729){
+			//I use a table of primes to verify my values; that table is finite and stops at 104729
+			//After that, the program just returns the results of its own prime generation.
+			List<Integer> result = generate(value-1,value+1);
+			return result.contains(value);
+		}
+		else{
+			return refNumberSet.containsAll(test);
+		}
+		
+		
 	}
 
 }
