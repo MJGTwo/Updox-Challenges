@@ -7,13 +7,15 @@ import {Provider } from './provider';
     <h1>{{title}}</h1>
     <h4>v2.0</h4>
     <ul class="providers">
-      <li *ngFor="let provider of providers">
+      <li *ngFor="let provider of providers"
+      [class.selected]="provider === selectedProvider"
+        (click)="onSelect(provider)">
         <span class="badge">{{provider.last_name}}, {{provider.first_name}}</span> {{provider.email_address}}
         <br> <span>{{provider.specialty}}</span>
         <br> <span>{{provider.practice_name}}</span>
       </li>
     </ul>
-
+    <provider-detail [provider]="selectedProvider"></provider-detail>
     `,
     styles: [`
   .selected {
