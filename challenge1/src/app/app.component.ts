@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Provider } from './provider';
 
 @Component({
   selector: 'my-app',
@@ -75,14 +76,7 @@ export class AppComponent {
 
 }
 
-export class Provider {
-  last_name: string;
-  first_name: string;
-  email_address: string;
-  specialty: string;
-  practice_name: string;
 
-}
 
 const PROVIDERS: Provider[] = [
     {"last_name": "Harris", "first_name": "Mike", "email_address": "mharris@updox.com", "specialty": "Pediatrics", "practice_name": "Harris Pediatrics"},
