@@ -11,7 +11,7 @@ import { ProviderService } from './provider.service';
     <button (click)="addProvider('LastName','FirstName','Email@example.com','Specialty','ProviderName')">Add</button>
     <button (click)="removeProvider()">Remove</button>
 
-    <select id = "category" (change)="selectCat()">
+    <select id="category" (change)="selectCat()">
          <option value="null">-- Select --</option>
          <option value="last_name">Last Name</option>
          <option value="first_name">First Name</option>
@@ -19,7 +19,7 @@ import { ProviderService } from './provider.service';
          <option value="specialty">Specialty</option>
          <option value="practice_name">Practice Name</option>
     </select>
-    <select id = "direct" (change)="selectDirection()">
+    <select id="direction" (change)="selectDirection()">
          <option value="forward">Forward</option>
          <option value="backward">Backward</option>
     </select>
@@ -37,9 +37,6 @@ import { ProviderService } from './provider.service';
 
     </div>
     `,
-    styles: [`
-
-`],
   providers: [ProviderService]
 })
 export class AppComponent implements OnInit {
@@ -52,6 +49,7 @@ export class AppComponent implements OnInit {
   onSelect(provider: Provider): void {
     this.selectedProvider = provider;
   }
+
 
   constructor(private providerService: ProviderService) { }
 
@@ -84,14 +82,18 @@ export class AppComponent implements OnInit {
       }
   }
 
+
+
   selectCat(): void {
-      this.category = document.getElementById('category').value;
+      var cat : HTMLSelectElement = <HTMLSelectElement> document.getElementById('category');
+
+      this.category = cat.value;
       this.sortProviders()
   }
 
   selectDirection(dirct:string): void {
-      var temp : string = document.getElementById('direct').value;
-      this.direction = ( temp === 'forward') ? 1 : -1;
+      var temp : HTMLSelectElement = <HTMLSelectElement> document.getElementById('direction');
+      this.direction = ( temp.value === 'forward') ? 1 : -1;
       this.sortProviders()
   }
 
@@ -99,6 +101,7 @@ export class AppComponent implements OnInit {
   sortProviders(): void{
       var that = this;
       if (this.category === 'last_name'){
+          console.log("GOT HERE");
           this.providers=this.providers.sort(function(a: Provider,b: Provider): number{
               if (a.last_name < b.last_name) return -1*that.direction;
               else if (a.last_name > b.last_name) return 1*that.direction;
